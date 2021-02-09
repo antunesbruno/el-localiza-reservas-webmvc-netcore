@@ -4,4 +4,8 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\el.localiza.reservas.mvc.netcore.Core\el.localiza.reservas.mvc.netcore.Core.csproj" />
+  </ItemGroup>
+
 </Project>
