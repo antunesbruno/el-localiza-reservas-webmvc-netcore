@@ -1,6 +1,6 @@
 using System;
 
-namespace el.localiza.reservas.mvc.netcore.Models
+namespace el.localiza.reservas.mvc.netcore.Web.Models
 {
     public class ErrorViewModel
     {
