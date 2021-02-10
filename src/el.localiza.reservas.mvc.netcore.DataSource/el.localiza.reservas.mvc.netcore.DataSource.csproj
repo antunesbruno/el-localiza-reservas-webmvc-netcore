@@ -8,4 +8,8 @@
     <PackageReference Include="Refit" Version="5.1.67" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\el.localiza.reservas.mvc.netcore.Shared\el.localiza.reservas.mvc.netcore.Shared.csproj" />
+  </ItemGroup>
+
 </Project>

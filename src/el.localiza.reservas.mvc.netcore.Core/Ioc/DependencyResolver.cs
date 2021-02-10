@@ -1,4 +1,6 @@
-﻿using el.localiza.reservas.mvc.netcore.DataSource.Requests;
+﻿using el.localiza.reservas.mvc.netcore.Core.Interfaces;
+using el.localiza.reservas.mvc.netcore.Core.Service;
+using el.localiza.reservas.mvc.netcore.DataSource.Requests;
 using Microsoft.Extensions.DependencyInjection;
 using Refit;
 using System;
@@ -23,7 +25,13 @@ namespace el.localiza.reservas.mvc.netcore.Core.Ioc
 
         private static void RegisterServices(IServiceCollection services)
         {
+            services.AddScoped<IVeiculoService, VeiculoService>();
+            services.AddScoped<IMarcaService, MarcaService>();
+            services.AddScoped<IModeloService, ModeloService>();
+            services.AddScoped<IUsuarioService, UsuarioService>();
+            services.AddScoped<IClienteService, ClienteService>();
         }
+
         private static void RegisterRefit(IServiceCollection services)
         {
             //Refit Api Reservas

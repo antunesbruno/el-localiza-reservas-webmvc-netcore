@@ -1,0 +1,57 @@
+﻿@model el.localiza.reservas.mvc.netcore.Web.Models.ReservaViewModel
+
+@{
+    ViewData["Title"] = "Reservas";
+}
+
+<h4>Simulação de Locação</h4>
+<hr />
+<form asp-action="ConfirmarReserva">
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="card">
+                <div class="card-body">
+                    <img class="d-block w-100" src="@Model.Veiculo.Modelo.ImagePath">
+                </div>
+                <div class="card-footer">
+                    <h6 class="card-title text-center font-weight-bold">@Model.Veiculo.Modelo.Nome</h6>
+                    <h6 class="card-title text-center font-weight-bold">@Model.Veiculo.Marca.Nome.ToUpper()</h6>
+                    <p class="card-text text-sm-center font-italic"><span>Combustivel: </span>@Model.Veiculo.CombustivelDescricao</p>
+                    <p class="card-text text-sm-center font-italic"><span>Categoria: </span>@Model.Veiculo.CategoriaDescricao</p>
+                    <p class="card-text text-sm-center font-italic"><span>Ano Fabricação: </span>@Model.Veiculo.Ano</p>
+                    <p class="card-text text-sm-center font-italic"><span>Porta Malas (Lts): </span>@Model.Veiculo.LimitePortaMalas</p>
+                    <h5 class="card-title text-center">@Model.Veiculo.ValorHoraFormatado</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="form-group text-center">
+                        <label class="control-label text-sm-center">Informe o Total de dias para Locação: </label>
+                        <input id="totalDiasLocacao" asp-for="TotalDiasLocacao" class="form-control" style="margin-bottom:5px;" type="number" onchange="reserva_simula_calculo();" />
+                        <a class="btn btn-warning" onclick="reserva_simula_calculo();">Simular Locação</a>
+                        <input id="valorHora" type="hidden" value="@Model.Veiculo.ValorHora" />
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <p class="card-text text-sm-center font-italic"><span>Total Dias Locação: </span><label id="totalDiasLbl" name="totalDiasLbl" class="control-label text-sm-center font-weight-bold" /></p>
+                    <p class="card-text text-sm-center font-italic"><span>Valor a pagar: R$</span><label id="vlrPagarLbl" name="vlrPagarLbl" class="control-label text-sm-center font-weight-bold" /></p>
+                    <div class="text-center">
+                        <input type="hidden" asp-for="@Model.IdVeiculo" value="@Model.Veiculo.IdVeiculo">
+                        <input type="submit" value="Confirmar Reserva?" class="btn btn-success">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+    <br />
+    <div>
+        <a asp-action="Index" class="btn btn-secondary">Voltar</a>
+    </div>
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }

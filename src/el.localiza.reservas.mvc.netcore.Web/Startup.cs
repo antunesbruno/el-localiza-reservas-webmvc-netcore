@@ -1,14 +1,11 @@
+using AutoMapper;
 using el.localiza.reservas.mvc.netcore.Core.Ioc;
+using el.localiza.reservas.mvc.netcore.Web.Mapping;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace el.localiza.reservas.mvc.netcore.Web
 {
@@ -25,6 +22,15 @@ namespace el.localiza.reservas.mvc.netcore.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDependencyResolver();
+
+            // Auto Mapper Configurations
+            var mapperConfig = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new MappingProfile());
+            });
+
+            IMapper mapper = mapperConfig.CreateMapper();
+            services.AddSingleton(mapper);
 
             services.AddControllersWithViews();
 

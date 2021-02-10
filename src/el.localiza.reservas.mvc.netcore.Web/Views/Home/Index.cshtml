@@ -1,8 +1,89 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model List<VeiculoViewModel>
+
+@{
+    ViewData["Title"] = "Central de Reservas - Localiza";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<div class="container">
+
+    @using (Html.BeginForm("Index", "Home"))
+    {
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <label class="input-group-text" for="inputGroupSelect01">Categorias: </label>
+            </div>
+            <select name="id" class="custom-select" id="inputGroupSelect01" onchange="this.form.submit();">
+                <option selected>Filtrar por...</option>
+                @{ foreach (var item in ViewBag.Categorias)
+                    {
+                        <option value="@item.Value">@item.Text</option>
+                    }
+                }
+            </select>
+        </div>
+      }
+
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    @{
+                        for (int i = 0; i < Model.Count(); i++)
+                        {
+                            if ((i % 3) == 0)
+                            {
+                                @:<div class="row">
+                                    <div class="col-sm-3">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <img class="d-block w-100" src="@Model[i].Modelo.ImagePath">
+                                            </div>
+
+                                            <div class="card-footer">
+                                                <h6 class="card-title text-center font-weight-bold">@Model[i].Modelo.Nome</h6>
+                                                <h6 class="card-title text-center font-weight-bold">@Model[i].Marca.Nome.ToUpper()</h6>
+                                                <p class="card-text text-sm-center font-italic"><span>Combustivel: </span>@Model[i].CombustivelDescricao</p>
+                                                <p class="card-text text-sm-center font-italic"><span>Categoria: </span>@Model[i].CategoriaDescricao</p>
+                                                <p class="card-text text-sm-center font-italic"><span>Ano Fabricação: </span>@Model[i].Ano</p>
+                                                <p class="card-text text-sm-center font-italic"><span>Porta Malas: </span>@Model[i].LimitePortaMalas</p>
+                                                <h5 class="card-title text-center">@Model[i].ValorHoraFormatado</h5>
+                                                <div class="text-center">                                                    
+                                                    <a id="id" name="id" class="btn btn-success" asp-action="EfetuaReserva" asp-route-id="@Model[i].IdVeiculo">Reservar Veículo</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                                else
+                                {
+                                    @:<div class="col-sm-3">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <img class="d-block w-100" src="@Model[i].Modelo.ImagePath">
+                                            </div>
+                                            <div class="card-footer">
+                                                <h6 class="card-title text-center font-weight-bold">@Model[i].Modelo.Nome</h6>
+                                                <h6 class="card-title text-center font-weight-bold">@Model[i].Marca.Nome.ToUpper()</h6>
+                                                <p class="card-text text-sm-center font-italic"><span>Combustivel: </span>@Model[i].CombustivelDescricao</p>
+                                                <p class="card-text text-sm-center font-italic"><span>Categoria: </span>@Model[i].CategoriaDescricao</p>
+                                                <p class="card-text text-sm-center font-italic"><span>Ano Fabricação: </span>@Model[i].Ano</p>
+                                                <p class="card-text text-sm-center font-italic"><span>Porta Malas: </span>@Model[i].LimitePortaMalas</p>
+                                                <h5 class="card-title text-center">@Model[i].ValorHoraFormatado</h5>
+                                                <div class="text-center">                                                    
+                                                    <a id="id" name="id" class="btn btn-success" asp-action="EfetuaReserva" asp-route-id="@Model[i].IdVeiculo">Reservar Veículo</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @:</div>
+                                }
+                            }
+                        @:</div>
+                    }
+                </div>
+             </div>
+        </div>
+</div>   
+
+
+ 
+
+

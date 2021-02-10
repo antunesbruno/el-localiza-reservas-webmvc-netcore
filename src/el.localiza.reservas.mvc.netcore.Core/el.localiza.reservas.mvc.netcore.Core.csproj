@@ -5,12 +5,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.8" />
     <PackageReference Include="Refit.HttpClientFactory" Version="5.1.67" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\el.localiza.reservas.mvc.netcore.DataSource\el.localiza.reservas.mvc.netcore.DataSource.csproj" />
+    <ProjectReference Include="..\el.localiza.reservas.mvc.netcore.Shared\el.localiza.reservas.mvc.netcore.Shared.csproj" />
   </ItemGroup>
 
 </Project>
