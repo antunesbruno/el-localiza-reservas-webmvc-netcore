@@ -12,7 +12,9 @@
       "commandName": "IISExpress",
       "launchBrowser": true,
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+
+        "EL_RESERVAS_REFIT_API_BASE": "https://localhost:44317/el.localiza.reservas.api.netcore"
       }
     },
     "el.localiza.reservas.mvc.netcore.Web": {
