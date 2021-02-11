@@ -40,8 +40,7 @@ namespace el.localiza.reservas.mvc.netcore.Web.Controllers
         public async Task<IActionResult> ConfirmarReserva(ReservaViewModel model)
         {
             return View();
-        }
-            
+        }            
 
         private async Task<VeiculoViewModel> ObterVeiculoPorId(string idVeiculo)
         {

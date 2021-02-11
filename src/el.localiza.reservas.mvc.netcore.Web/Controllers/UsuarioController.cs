@@ -30,9 +30,7 @@ namespace el.localiza.reservas.mvc.netcore.Web.Controllers
 
         // GET: UsuarioController
         public async Task<ActionResult> Index()
-        {
-            //ViewData["NameSortParm"] = "Teste1";
-            //ViewData["DateSortParm"] = DateTime.Now;
+        {       
 
             //preenche a lista
             if(_listaUsuario == null)
